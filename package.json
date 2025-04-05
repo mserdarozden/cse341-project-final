@@ -1,5 +1,5 @@
 {
-  "name": "cse341-project02",
+  "name": "library-management",
   "version": "1.0.0",
   "description": "cse-341 school project",
   "main": "server.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mserdarozden/cse341-project02.git"
+    "url": "git+https://github.com/mserdarozden/cse341-project-final.git"
   },
-  "author": "Serdar Ozden",
+  "author": "Serdar Ozden and Franco Chavez",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mserdarozden/cse341-project02/issues"
+    "url": "https://github.com/mserdarozden/cse341-project-final/issues"
   },
-  "homepage": "https://github.com/mserdarozden/cse341-project02#readme",
+  "homepage": "https://github.com/mserdarozden/cse341-project-final#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",

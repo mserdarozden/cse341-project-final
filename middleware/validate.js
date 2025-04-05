@@ -1,15 +1,13 @@
 const validator = require('../helpers/validate');
-const saveStudent = async (req, res, next) => {
+const saveBook = async (req, res, next) => {
     const validationRule = {
-        firstName: 'required|string',
-        lastName: 'required|string',
-        email: 'required|email',
-        birthdate: 'required|date',
-        address: 'required|string',
-        phoneNumber: 'required|string|min:10|max:15',
-        enrollmentYear: 'required|integer|min:2000|max:2099',
-        major: 'required|string',
-        gpa: 'required|numeric|min:0|max:4'
+        title: 'required|string',
+        author: 'required|string',
+        genre: 'required|string',
+        publishedYear: 'required|integer|min:1000|max:2099',
+        ISBN: 'required|string',
+        copiesAvailable: 'required|integer|min:0',
+        description: 'required|string'
     };
 
     await validator(req.body, validationRule, {}, (err, status) => {
@@ -26,12 +24,12 @@ const saveStudent = async (req, res, next) => {
     }).catch( err => console.log(err))
 }
 
-const saveCourse = async (req, res, next) => {
+const saveAuthor = async (req, res, next) => {
     const validationRule = {
-        title: 'required|string',
-        description: 'required|string',
-        credits: 'required|integer|min:1|max:10',
-        teacherName: 'required|string'
+        name: 'required|string',
+        birthdate: 'required|date',
+        nationality: 'required|string',
+        biography: 'required|string'
     };
 
     await validator(req.body, validationRule, {}, (err, status) => {
@@ -49,6 +47,6 @@ const saveCourse = async (req, res, next) => {
 }
 
 module.exports = {
-    saveStudent,
-    saveCourse
+    saveBook,
+    saveAuthor
 };
