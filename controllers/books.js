@@ -3,7 +3,6 @@ const ObjectId = require("mongodb").ObjectId;
 
 const getAll = async (req, res) => {
   //#swagger.tags = ['Books']
-  console.log("Getting all books");
   try {
     const result = await mongodb
       .getDatabase()
@@ -11,8 +10,6 @@ const getAll = async (req, res) => {
       .collection("books")
       .find();
     const books = await result.toArray();
-    console.log("Books fetched successfully");
-    console.log(books);
     res.setHeader("Content-Type", "application/json");
     res.status(200).json(books);
   } catch (err) {
