@@ -6,7 +6,7 @@ const doc = {
     description: 'Library Management API'
   },
   host: 'https://cse341-project-final.onrender.com',
-  schemes: ['https', 'http']
+  schemes: ['https']
 };
 
 const outputFile = './swagger.json';
