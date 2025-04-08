@@ -9,10 +9,10 @@ router.get('/', authorsController.getAll);
 
 router.get('/:id', authorsController.getSingle);
 
-router.post('/', isAuthenticated, validation.saveAuthor, authorsController.createAuthor);
+router.post('/', authorsController.createAuthor);
 
-router.put('/:id', isAuthenticated, validation.saveAuthor, authorsController.updateAuthor);
+router.put('/:id', authorsController.updateAuthor);
 
-router.delete('/:id', isAuthenticated, authorsController.deleteAuthor);
+router.delete('/:id', authorsController.deleteAuthor);
 
 module.exports = router;
