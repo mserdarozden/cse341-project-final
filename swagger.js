@@ -5,7 +5,7 @@ const doc = {
     title: 'Library Management API',
     description: 'Library Management API'
   },
-  host: 'localhost:3000',
+  host: 'https://cse341-project-final.onrender.com',
   schemes: ['https', 'http']
 };
 
