@@ -5,10 +5,10 @@ const validation = require('../middleware/validate');
 const { isAuthenticated } = require("../middleware/authenticate");
 
 
-router.get('/members', membersController.getAllMembers);
-router.get('/members/:id', membersController.getSingleMember);
-router.post('/members', membersController.createMember);
-router.put('/members/:id', membersController.updateMember);
-router.delete('/members/:id', membersController.deleteMember);
+router.get('/', membersController.getAllMembers);
+router.get('/:id', membersController.getSingleMember);
+router.post('/', membersController.createMember);
+router.put('/:id', membersController.updateMember);
+router.delete('/:id', membersController.deleteMember);
 
 module.exports = router;

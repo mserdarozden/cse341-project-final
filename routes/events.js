@@ -5,10 +5,10 @@ const validation = require('../middleware/validate');
 const { isAuthenticated } = require("../middleware/authenticate");
 
 
-router.get('/events', eventsController.getAllEvents);
-router.get('/events/:id', eventsController.getSingleEvent);
-router.post('/events', eventsController.createEvent);
-router.put('/events/:id', eventsController.updateEvent);
-router.delete('/events/:id', eventsController.deleteEvent);
+router.get('/', eventsController.getAllEvents);
+router.get('/:id', eventsController.getSingleEvent);
+router.post('/', eventsController.createEvent);
+router.put('/:id', eventsController.updateEvent);
+router.delete('/:id', eventsController.deleteEvent);
 
 module.exports = router;
