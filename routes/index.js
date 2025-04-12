@@ -10,6 +10,8 @@ router.get("/", (req, res) => {
 
 router.use("/books", require("./books"));
 router.use("/authors", require("./authors"));
+router.use("/members", require("./members"));
+router.use("/events", require("./events"));
 
 router.get('/login', passport.authenticate('github'), (req, res) => {
   // Optional callback after authentication is triggered
