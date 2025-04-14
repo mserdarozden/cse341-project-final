@@ -46,7 +46,55 @@ const saveAuthor = async (req, res, next) => {
     }).catch( err => console.log(err))
 }
 
+const saveEvent = async (req, res, next) => {
+    const validationRule = {
+        eventName: 'required|string',
+        eventDate: 'required|date',
+        location: 'required|string',
+        description: 'required|string',
+        capacity: 'required|integer|min:1',
+        organizer: 'required|string'
+    };
+
+    await validator(req.body, validationRule, {}, (err, status) => {
+        if (!status) {
+            res.status(412)
+                .send({
+                    success: false,
+                    message: 'Validation failed',
+                    data: err
+                });
+        } else {
+            next();
+        }
+    }).catch( err => console.log(err))
+}
+
+const saveMember = async (req, res, next) => {
+    const validationRule = {
+        firstName: 'required|string',
+        lastName: 'required|string',
+        email: 'required|email',
+        phone: 'required|string|min:10|max:15'
+    };
+
+    await validator(req.body, validationRule, {}, (err, status) => {
+        if (!status) {
+            res.status(412)
+                .send({
+                    success: false,
+                    message: 'Validation failed',
+                    data: err
+                });
+        } else {
+            next();
+        }
+    }).catch( err => console.log(err))
+}
+
 module.exports = {
     saveBook,
-    saveAuthor
+    saveAuthor,
+    saveEvent,
+    saveMember
 };

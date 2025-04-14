@@ -7,8 +7,8 @@ const { isAuthenticated } = require("../middleware/authenticate");
 
 router.get('/', eventsController.getAllEvents);
 router.get('/:id', eventsController.getSingleEvent);
-router.post('/', eventsController.createEvent);
-router.put('/:id', eventsController.updateEvent);
-router.delete('/:id', eventsController.deleteEvent);
+router.post('/', isAuthenticated, validation.saveEvent, eventsController.createEvent);
+router.put('/:id', isAuthenticated, validation.saveEvent, eventsController.updateEvent);
+router.delete('/:id', isAuthenticated, eventsController.deleteEvent);
 
 module.exports = router;

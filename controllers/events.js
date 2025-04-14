@@ -48,8 +48,8 @@ const createEvent = async (req, res) => {
   //#swagger.tags = ['Events']
   try {
     const event = {
-      name: req.body.name,
-      date: req.body.date,
+      eventName: req.body.eventName,
+      eventDate: req.body.eventDate,
       location: req.body.location,
       description: req.body.description,
       capacity: req.body.capacity,
@@ -81,8 +81,8 @@ const updateEvent = async (req, res) => {
   try {
     const eventId = new ObjectId(req.params.id);
     const event = {
-      name: req.body.name,
-      date: req.body.date,
+      eventName: req.body.name,
+      eventDate: req.body.date,
       location: req.body.location,
       description: req.body.description,
       capacity: req.body.capacity,

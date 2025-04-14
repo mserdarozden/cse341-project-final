@@ -35,13 +35,13 @@
           "schema": {
             "type": "object",
             "properties": {
-              "title": {"example": "any"},
-              "author": {"example": "any"},
-              "genre": {"example": "any"},
-              "publishedYear": {"example": "any"},
-              "ISBN": {"example": "any"},
-              "copiesAvailable": {"example": "any"},
-              "description": {"example": "any"}
+              "title": {"example": "Solar Drift"},
+              "author": {"example": "Nadia Chen"},
+              "genre": {"example": "Science Fiction"},
+              "publishedYear": {"example": "2018"},
+              "ISBN": {"example": "978-0-553-57340-2"},
+              "copiesAvailable": {"example": "6"},
+              "description": {"example": "A rogue pilot must prevent a solar catastrophe that threatens all life in the galaxy."}
             }
           }
         }],
@@ -85,13 +85,13 @@
           "schema": {
             "type": "object",
             "properties": {
-              "title": {"example": "any"},
-              "author": {"example": "any"},
-              "genre": {"example": "any"},
-              "publishedYear": {"example": "any"},
-              "ISBN": {"example": "any"},
-              "copiesAvailable": {"example": "any"},
-              "description": {"example": "any"}
+              "title": {"example": "Solar Drift"},
+              "author": {"example": "Nadia Chen"},
+              "genre": {"example": "Science Fiction"},
+              "publishedYear": {"example": "2018"},
+              "ISBN": {"example": "978-0-553-57340-2"},
+              "copiesAvailable": {"example": "6"},
+              "description": {"example": "A rogue pilot must prevent a solar catastrophe that threatens all life in the galaxy."}
             }
           }
         }],
@@ -141,10 +141,10 @@
           "schema": {
             "type": "object",
             "properties": {
-              "name": {"example": "any"},
-              "birthdate": {"example": "any"},
-              "nationality": {"example": "any"},
-              "biography": {"example": "any"}
+              "name": {"example": "Lena Torres"},
+              "birthdate": {"example": "1988-01-27"},
+              "nationality": {"example": "Mexican-American"},
+              "biography": {"example": "Lena Torres writes historical fiction inspired by Latin American history and female voices. She holds a degree in literature and history."}
             }
           }
         }],
@@ -188,10 +188,10 @@
           "schema": {
             "type": "object",
             "properties": {
-              "name": {"example": "any"},
-              "birthdate": {"example": "any"},
-              "nationality": {"example": "any"},
-              "biography": {"example": "any"}
+              "name": {"example": "Lena Torres"},
+              "birthdate": {"example": "1988-01-27"},
+              "nationality": {"example": "Mexican-American"},
+              "biography": {"example": "Lena Torres writes historical fiction inspired by Latin American history and female voices. She holds a degree in literature and history."}
             }
           }
         }],
