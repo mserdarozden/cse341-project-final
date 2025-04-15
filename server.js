@@ -1,10 +1,13 @@
+
 // const express = require("express");
 // const mongodb = require("./data/database");
 // const bodyParser = require("body-parser");
 // const passport = require("passport");
 // const session = require("express-session");
 // const cors = require("cors");
-// const port = process.env.PORT || 3000;
+
+// //const port = process.env.TEST_PORT || process.env.PORT || 3000; // Usa TEST_PORT si está definido
+// const port = process.env.PORT || 3000; // Render asigna automáticamente el puerto a process.env.PORT
 
 // const app = express();
 
@@ -58,8 +61,9 @@
 //         console.log(err);
 //         reject(err);
 //       } else {
-//         server = app.listen(process.env.TEST_PORT || port, () => {
-//           console.log(`Database is listening and node Running on port ${process.env.TEST_PORT || port}`);
+//         server = app.listen(port, () => {
+//           console.log(`Database is listening and node Running on port ${port}`);
+//           resolve(server);
 //         });
 //         server.on("error", (error) => {
 //           if (error.code === "EADDRINUSE") {
@@ -80,20 +84,26 @@
 //     console.log("Server stopped.");
 //   }
 // };
-
 // module.exports = { app, startServer, stopServer };
+// // Llamar a startServer automáticamente si se ejecuta directamente
+// if (require.main === module) {
+//   startServer().catch((err) => {
+//     console.error('Failed to start server:', err.message);
+//   });
+// }
 const express = require("express");
 const mongodb = require("./data/database");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const session = require("express-session");
 const cors = require("cors");
+const GitHubStrategy = require("passport-github2").Strategy;
 
-//const port = process.env.TEST_PORT || process.env.PORT || 3000; // Usa TEST_PORT si está definido
 const port = process.env.PORT || 3000; // Render asigna automáticamente el puerto a process.env.PORT
 
 const app = express();
 
+// Configuración de middlewares
 app
   .use(bodyParser.json())
   .use(
@@ -121,6 +131,44 @@ app
   .use(cors({ origin: "*" }))
   .use("/", require("./routes/index.js"));
 
+// Configuración de Passport.js (excluido en entorno de pruebas)
+if (process.env.NODE_ENV !== "test") {
+  passport.use(
+    new GitHubStrategy(
+      {
+        clientID: process.env.GITHUB_CLIENT_ID,
+        clientSecret: process.env.GITHUB_CLIENT_SECRET,
+        callbackURL: process.env.CALLBACK_URL,
+      },
+      function (accessToken, refreshToken, profile, done) {
+        return done(null, profile);
+      }
+    )
+  );
+
+  passport.serializeUser((user, done) => {
+    done(null, user);
+  });
+
+  passport.deserializeUser((user, done) => {
+    done(null, user);
+  });
+
+  // Ruta de callback de GitHub
+  app.get(
+    "/github/callback",
+    passport.authenticate("github", {
+      failureRedirect: "/api-docs",
+      session: false,
+    }),
+    (req, res) => {
+      req.session.user = req.user;
+      res.redirect("/");
+    }
+  );
+}
+
+// Ruta principal
 app.get("/", (req, res) => {
   res.send(
     req.session.user !== undefined
@@ -137,38 +185,7 @@ app.use((err, req, res, next) => {
 
 let server;
 
-
-// const startServer = async () => {
-//   return new Promise((resolve, reject) => {
-//     mongodb.initDb((err) => {
-//       if (err) {
-//         console.log(err);
-//         reject(err);
-//       } else {
-//         server = app.listen(port, () => {
-//           const assignedPort = server.address().port; // Obtén el puerto asignado dinámicamente
-//           console.log(`Database is listening and node Running on port ${assignedPort}`);
-//           resolve(server);
-//         });
-//         server.on("error", (error) => {
-//           if (error.code === "EADDRINUSE") {
-//             console.error(`Port ${port} is already in use.`);
-//           } else {
-//             console.error("Error starting server:", error);
-//           }
-//           reject(error);
-//         });
-//       }
-//     });
-//   });
-// };
-
-// const stopServer = async () => {
-//   if (server) {
-//     await new Promise((resolve) => server.close(resolve));
-//     console.log("Server stopped.");
-//   }
-// };
+// Inicialización del servidor
 const startServer = async () => {
   return new Promise((resolve, reject) => {
     mongodb.initDb((err) => {
@@ -193,16 +210,19 @@ const startServer = async () => {
   });
 };
 
+// Detener el servidor
 const stopServer = async () => {
   if (server) {
     await new Promise((resolve) => server.close(resolve));
     console.log("Server stopped.");
   }
 };
+
 module.exports = { app, startServer, stopServer };
+
 // Llamar a startServer automáticamente si se ejecuta directamente
 if (require.main === module) {
   startServer().catch((err) => {
-    console.error('Failed to start server:', err.message);
+    console.error("Failed to start server:", err.message);
   });
 }
