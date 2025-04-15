@@ -46,7 +46,7 @@ const initDb = (callback) => {
         return callback(null, database);
     }
 
-    MongoClient.connect(process.env.MONGODB_URI)
+    MongoClient.connect(process.env.MONGODB_URL)
         .then((client) => {
             database = client;
             callback(null, database);
