@@ -200,3 +200,9 @@ const stopServer = async () => {
   }
 };
 module.exports = { app, startServer, stopServer };
+// Llamar a startServer automáticamente si se ejecuta directamente
+if (require.main === module) {
+  startServer().catch((err) => {
+    console.error('Failed to start server:', err.message);
+  });
+}
