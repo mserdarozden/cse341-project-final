@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1744681018088" clover="3.2.0">
-  <project timestamp="1744681018088" name="All files">
-    <metrics statements="375" coveredstatements="207" conditionals="83" coveredconditionals="23" methods="49" coveredmethods="19" elements="507" coveredelements="249" complexity="0" loc="375" ncloc="375" packages="6" files="15" classes="15"/>
+<coverage generated="1744682329477" clover="3.2.0">
+  <project timestamp="1744682329477" name="All files">
+    <metrics statements="389" coveredstatements="209" conditionals="87" coveredconditionals="23" methods="55" coveredmethods="19" elements="531" coveredelements="251" complexity="0" loc="389" ncloc="389" packages="6" files="15" classes="15"/>
     <package name="cse341-project-final">
       <metrics statements="38" coveredstatements="29" conditionals="11" coveredconditionals="3" methods="10" coveredmethods="7"/>
       <file name="server.js" path="C:\Users\cfran\OneDrive\Documentos\cse-341-project-final\cse341-project-final\server.js">
@@ -324,7 +324,7 @@
       </file>
     </package>
     <package name="cse341-project-final.middleware">
-      <metrics statements="21" coveredstatements="6" conditionals="6" coveredconditionals="0" methods="7" coveredmethods="0"/>
+      <metrics statements="35" coveredstatements="8" conditionals="10" coveredconditionals="0" methods="13" coveredmethods="0"/>
       <file name="authenticate.js" path="C:\Users\cfran\OneDrive\Documentos\cse-341-project-final\cse341-project-final\middleware\authenticate.js">
         <metrics statements="5" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="4" type="stmt"/>
@@ -334,7 +334,7 @@
         <line num="8" count="4" type="stmt"/>
       </file>
       <file name="validate.js" path="C:\Users\cfran\OneDrive\Documentos\cse-341-project-final\cse341-project-final\middleware\validate.js">
-        <metrics statements="16" coveredstatements="4" conditionals="4" coveredconditionals="0" methods="6" coveredmethods="0"/>
+        <metrics statements="30" coveredstatements="6" conditionals="8" coveredconditionals="0" methods="12" coveredmethods="0"/>
         <line num="1" count="4" type="stmt"/>
         <line num="2" count="4" type="stmt"/>
         <line num="3" count="0" type="stmt"/>
@@ -351,6 +351,20 @@
         <line num="44" count="0" type="stmt"/>
         <line num="46" count="0" type="stmt"/>
         <line num="49" count="4" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="59" count="0" type="stmt"/>
+        <line num="60" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="68" count="0" type="stmt"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="73" count="4" type="stmt"/>
+        <line num="74" count="0" type="stmt"/>
+        <line num="81" count="0" type="stmt"/>
+        <line num="82" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="83" count="0" type="stmt"/>
+        <line num="90" count="0" type="stmt"/>
+        <line num="92" count="0" type="stmt"/>
+        <line num="95" count="4" type="stmt"/>
       </file>
     </package>
     <package name="cse341-project-final.routes">

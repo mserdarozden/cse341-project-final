@@ -89,7 +89,8 @@ const passport = require("passport");
 const session = require("express-session");
 const cors = require("cors");
 
-const port = process.env.TEST_PORT || process.env.PORT || 3000; // Usa TEST_PORT si está definido
+//const port = process.env.TEST_PORT || process.env.PORT || 3000; // Usa TEST_PORT si está definido
+const port = process.env.PORT || 3000; // Render asigna automáticamente el puerto a process.env.PORT
 
 const app = express();
 
@@ -136,6 +137,7 @@ app.use((err, req, res, next) => {
 
 let server;
 
+
 // const startServer = async () => {
 //   return new Promise((resolve, reject) => {
 //     mongodb.initDb((err) => {
@@ -144,7 +146,8 @@ let server;
 //         reject(err);
 //       } else {
 //         server = app.listen(port, () => {
-//           console.log(`Database is listening and node Running on port ${port}`);
+//           const assignedPort = server.address().port; // Obtén el puerto asignado dinámicamente
+//           console.log(`Database is listening and node Running on port ${assignedPort}`);
 //           resolve(server);
 //         });
 //         server.on("error", (error) => {
@@ -159,6 +162,13 @@ let server;
 //     });
 //   });
 // };
+
+// const stopServer = async () => {
+//   if (server) {
+//     await new Promise((resolve) => server.close(resolve));
+//     console.log("Server stopped.");
+//   }
+// };
 const startServer = async () => {
   return new Promise((resolve, reject) => {
     mongodb.initDb((err) => {
@@ -167,8 +177,7 @@ const startServer = async () => {
         reject(err);
       } else {
         server = app.listen(port, () => {
-          const assignedPort = server.address().port; // Obtén el puerto asignado dinámicamente
-          console.log(`Database is listening and node Running on port ${assignedPort}`);
+          console.log(`Database is listening and node Running on port ${port}`);
           resolve(server);
         });
         server.on("error", (error) => {
@@ -190,5 +199,4 @@ const stopServer = async () => {
     console.log("Server stopped.");
   }
 };
-
 module.exports = { app, startServer, stopServer };

@@ -4,6 +4,7 @@
   "description": "cse-341 school project",
   "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "jest --verbose --coverage --runInBand"
   },
   "repository": {
