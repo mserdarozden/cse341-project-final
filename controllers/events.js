@@ -81,8 +81,8 @@ const updateEvent = async (req, res) => {
   try {
     const eventId = new ObjectId(req.params.id);
     const event = {
-      eventName: req.body.name,
-      eventDate: req.body.date,
+      eventName: req.body.eventName,
+      eventDate: req.body.eventDate,
       location: req.body.location,
       description: req.body.description,
       capacity: req.body.capacity,
